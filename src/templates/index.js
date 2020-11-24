@@ -5,9 +5,12 @@ import welcomeEmailTemplate from "./accounts/sendWelcomeEmail.js";
 import verifyUpdatedEmailTemplate from "./accounts/verifyUpdatedEmail.js";
 import verifyEmailTemplate from "./accounts/verifyEmail.js";
 import coreOrderNewTemplate from "./orders/new.js";
+import coreOrderNewAdminTemplate from "./orders/new-admin.js";
 import orderShippedTemplate from "./orders/shipped.js";
 import orderRefundedTemplate from "./orders/refunded.js";
 import orderItemRefundTemplate from "./orders/itemRefund.js";
+import orderCompleted from "./orders/completed.js";
+import orderCanceled from "./orders/canceled.js";
 
 export default [
   /*
@@ -102,6 +105,14 @@ export default [
     subject: "Your order is confirmed - {{order.referenceId}}"
   },
 
+  {
+    language: "en",
+    title: "Orders - New Order Placed [Admin]",
+    name: "orders/new-admin",
+    template: coreOrderNewAdminTemplate,
+    subject: "New order was placed - {{order.referenceId}}"
+  },
+
   /*
    * Orders - Order Shipped
    * When: Admin completes the order flow and item is shipped
@@ -126,6 +137,22 @@ export default [
     name: "orders/refunded",
     template: orderRefundedTemplate,
     subject: "{{shop.name}}: Confirmation of refund for {{order.referenceId}}"
+  },
+
+  {
+    language: "en",
+    title: "Orders - Order Completed",
+    name: "orders/completed",
+    template: orderCompleted,
+    subject: "{{shop.name}}: Order Completed - {{order.referenceId}}"
+  },
+
+  {
+    language: "en",
+    title: "Orders - Order Canceled",
+    name: "orders/canceled",
+    template: orderCanceled,
+    subject: "{{shop.name}}: Order Canceled - {{order.referenceId}}"
   },
 
   /*

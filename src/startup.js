@@ -7,6 +7,13 @@ import seedEmailTemplatesForShop from "./util/seedEmailTemplatesForShop.js";
  * @returns {undefined}
  */
 export default async function emailTemplatesStartup(context) {
+  const primaryShopId = await context.queries.primaryShopId(context.getInternalContext());
+
+  if(primaryShopId) {
+    console.log("Shope was already created, let's register remaining templates.")
+    await seedEmailTemplatesForShop(context, primaryShopId);
+  }
+
   context.appEvents.on("afterShopCreate", async (payload) => {
     const { shop } = payload;
 
