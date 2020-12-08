@@ -11,6 +11,7 @@ import orderRefundedTemplate from "./orders/refunded.js";
 import orderItemRefundTemplate from "./orders/itemRefund.js";
 import orderCompleted from "./orders/completed.js";
 import orderCanceled from "./orders/canceled.js";
+import orderFollowup from "./orders/followup.js";
 
 export default [
   /*
@@ -102,7 +103,7 @@ export default [
     title: "Orders - New Order Placed",
     name: "orders/new",
     template: coreOrderNewTemplate,
-    subject: "Your order is confirmed - {{order.referenceId}}"
+    subject: "Thank you for your gift order  {{order.referenceId}}"
   },
 
   {
@@ -110,7 +111,7 @@ export default [
     title: "Orders - New Order Placed [Admin]",
     name: "orders/new-admin",
     template: coreOrderNewAdminTemplate,
-    subject: "New order was placed - {{order.referenceId}}"
+    subject: "Thank you for your gift order  {{order.referenceId}}"
   },
 
   /*
@@ -123,7 +124,7 @@ export default [
     title: "Orders - Order Shipped",
     name: "orders/shipped",
     template: orderShippedTemplate,
-    subject: "{{shop.name}}: Your order has shipped - {{order.referenceId}}"
+    subject: "Your gift order has shipped"
   },
 
   /*
@@ -144,7 +145,7 @@ export default [
     title: "Orders - Order Completed",
     name: "orders/completed",
     template: orderCompleted,
-    subject: "{{shop.name}}: Order Completed - {{order.referenceId}}"
+    subject: "We have delivered gifts to your loved ones!"
   },
 
   {
@@ -155,6 +156,13 @@ export default [
     subject: "{{shop.name}}: Order Canceled - {{order.referenceId}}"
   },
 
+  {
+    language: "en",
+    title: "Orders - Followup",
+    name: "orders/followup",
+    template: orderFollowup,
+    subject: "{{shop.name}}: Hope you had a great experience - {{order.referenceId}}"
+  },
   /*
    * Orders - Order Refunded
    * When: Admin completes the order flow and item is shipped
