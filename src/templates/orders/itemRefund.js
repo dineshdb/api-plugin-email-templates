@@ -1,5 +1,6 @@
 export default `<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<base href="{{homepage}}">
 	<title>Order Confirm Email</title>
 	<style type="text/css">
 		/* Media Query for mobile */
@@ -103,26 +104,20 @@ export default `<head>
 				color: inherit;
 				text-decoration: none;
 			}
-
-			a img {
+			a img, img {
 				border: 0;
 				outline: 0;
 			}
-
-			img {
-				border: 0;
-				outline: 0;
-			}
-
 			.a5q {
 				display: none !important;
 			}
-
 			table table table div {
 				display: none !important;
 			}
 		}
 	</style>
+  <script type="application/ld+json">	{{{ jsonldString }}} </script>
+
 </head>
 
 <body style="margin:0; padding:0;">
@@ -245,7 +240,7 @@ export default `<head>
 																		<tr>
 																			<td valign="top" align="left">
 																				<a style="text-decoration: none; color: #333;"
-																					href="https://gifts.hamropatro.com/product/{{productSlug}}">
+																					href="/product/{{productSlug}}">
 																					<table width="100%" border="0"
 																						cellspacing="0" cellpadding="0"
 																						class="emailwrapto100pc">
@@ -283,7 +278,7 @@ export default `<head>
 																												<td valign="middle"
 																													align="left">
 																													{{#if imageURLs}}
-																													<img src="https://store-api.hamropatro.com{{imageURLs.thumbnail}}"
+																													<img src="{{thumbnail}}"
 																														width="50"
 																														height="50"
 																														alt="" />
@@ -317,7 +312,7 @@ export default `<head>
 																												<td align="right"
 																													valign="middle"
 																													style="font-size:12px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
-																													USD {{price.displayAmount}}
+																													{{price.currency.code}} {{price.displayAmount}}
 																												</td>
 																											</tr>
 																										</tbody>
@@ -357,7 +352,7 @@ export default `<head>
 																								align="right"
 																								style="font-size:12px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
 																								Subtotal:
-																								USD {{billing.subtotal}}
+																								{{price.currency.code}} {{billing.subtotal}}
 																							</td>
 																						</tr>
 																						<tr>
@@ -365,7 +360,15 @@ export default `<head>
 																								align="right"
 																								style="font-size:12px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
 																								Shipping:
-																								USD {{billing.shipping}}
+																								{{price.currency.code}} {{billing.shipping}}
+																							</td>
+																						</tr>
+																						<tr>
+																							<td valign="top"
+																								align="right"
+																								style="font-size:12px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
+																								Discounts:
+																								{{price.currency.code}} {{billing.discounts}}
 																							</td>
 																						</tr>
 																						<tr>
@@ -391,7 +394,7 @@ export default `<head>
 																								align="right"
 																								style="font-size:12px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
 																								Previous Total:
-																								USD {{billing.total}}</td>
+																								{{price.currency.code}} {{billing.total}}</td>
 																						</tr>
 																						<tr>
 																							<td valign="top"
@@ -429,7 +432,7 @@ export default `<head>
 																											<td valign="top"
 																												align="right"
 																												style="font-size:22px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
-																												USD {{billing.adjustedTotal}}
+																												{{price.currency.code}} {{billing.adjustedTotal}}
 																											</td>
 																										</tr>
 																									</tbody>
