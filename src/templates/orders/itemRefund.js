@@ -230,7 +230,6 @@ export default `<head>
 															</div>
 														</div>
 
-
 														<tr>
 															<td align="left" valign="top">
 																<table width="100%" border="0" cellspacing="0"

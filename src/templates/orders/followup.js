@@ -1,7 +1,6 @@
 export default `<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<base href="{{homepage}}">
-	<title>Order Confirm Email</title>
+	<title>Order Folloup Email</title>
 	<style type="text/css">
 		/* Media Query for mobile */
 
@@ -104,20 +103,26 @@ export default `<head>
 				color: inherit;
 				text-decoration: none;
 			}
-			a img, img {
+
+			a img {
 				border: 0;
 				outline: 0;
 			}
+
+			img {
+				border: 0;
+				outline: 0;
+			}
+
 			.a5q {
 				display: none !important;
 			}
+
 			table table table div {
 				display: none !important;
 			}
 		}
 	</style>
-  <script type="application/ld+json">	{{{ jsonldString }}} </script>
-
 </head>
 
 <body style="margin:0; padding:0;">
@@ -165,290 +170,20 @@ export default `<head>
 
 														<!-- Begin Body -->
 														<div>
-															<div>
-																<span style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Order Number:</span> 
-																<a href="{{orderUrl}}" style="color:#1999dd;">{{order.referenceId}}</a>
-															</div>
-															<div>
-																<span
-																	style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Order
-																	Date:</span> {{orderDate}}
-															</div>
-															<div>
-																<span
-																	style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Payment
-																	Type:</span>
-																{{#each billing.payments}}
-																{{this.displayName}} ({{this.displayAmount}})
-																{{/each}}
-															</div>
-															{{#if order.preferredDeliveryDate}}															
-																<div>
-																	<span style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Delivery Date:</span> 
-																	{{ order.preferredDeliveryDate }}
-																</div>
-															{{/if}}
+															<p>Namaste!</p>
+															<p>Thank you for using Hamro Gifts to send gifts to your friends and family in Nepal. 
+															We would love to know your feedback so that we can provide better service in the future.</p>
 															
-															{{#if order.message}}
-																<div>
-																	<span style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Message:</span> 
-																	{{ order.message }}
-																</div>
-															{{/if}}
-
-															{{#if order.messageOnItem}}															
-																<div>
-																	<span style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Message on Cake:</span> 
-																	{{ order.messageOnItem }}
-																</div>
-															{{/if}}
-
-															<br style="height:2px; background-color: gray" />
-															<div
-																style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">
-																Delivery Address:</div>
-															<div
-																style="font-size:10px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
-																{{#with shipping.address}}
-																  {{this.fullName}} {{this.phone}}<br>
-																  {{this.address}}<br>
-																  {{this.city}} {{this.region}} {{this.postal}}
-																{{/with}}
-															</div>
-
-															<br style="height:2px; background-color: gray" />
-															<div
-																style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">
-																Billing Address:</div>
-															<div
-																style="font-size:10px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
-																{{#with billing.address}}
-																{{this.fullName}} {{this.phone}}<br>
-																{{this.address}}<br>
-																{{this.city}} {{this.region}} {{this.postal}}
-																{{/with}}
-															</div>
+															<p>Please rate your experience here - <a href="https://forms.gle/j2EjqNb8gT3ZZbD47">https://forms.gle/j2EjqNb8gT3ZZbD47</a></p>
+															
+															<p>Thank you once again for using our services.</p>
+															
+															<p>
+															With best regards,<br/>
+															Hamro Gifts Support Team
+															</p>
+														
 														</div>
-
-
-														<tr>
-															<td align="left" valign="top">
-																<table width="100%" border="0" cellspacing="0"
-																	cellpadding="0" class="emailwrapto100pc">
-																	<tbody>
-																		{{#each combinedItems}}
-																		<tr>
-																			<td valign="top" align="left">
-																				<a style="text-decoration: none; color: #333;"
-																					href="/product/{{productSlug}}">
-																					<table width="100%" border="0"
-																						cellspacing="0" cellpadding="0"
-																						class="emailwrapto100pc">
-																						<tbody>
-																							<tr>
-																								<td valign="top"
-																									align="left">
-																									<table width="110"
-																										border="0"
-																										cellspacing="0"
-																										cellpadding="0"
-																										class="emailwrapto100pc">
-																										<tbody>
-																											<tr>
-																												<td valign="middle"
-																													align="left"
-																													height="15"
-																													style="line-height:1px; font-size:1px;">
-																													&nbsp;
-																												</td>
-																											</tr>
-																											<tr>
-																												<td valign="middle"
-																													align="left"
-																													style="font-size:12px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
-																													{{quantity}}
-																													x
-																												</td>
-																												<td valign="top"
-																													align="center"
-																													width="30"
-																													style="line-height:1px; font-size:1px;">
-																													&nbsp;
-																												</td>
-																												<td valign="middle"
-																													align="left">
-																													{{#if imageURLs}}
-																													<img src="{{thumbnail}}"
-																														width="50"
-																														height="50"
-																														alt="" />
-																													{{else}}
-																													<img src="{{placeholderImage}}"
-																														width="50"
-																														height="50"
-																														alt="" />
-																													{{/if}}
-																												</td>
-																											</tr>
-																										</tbody>
-																									</table>
-																								</td>
-																								<td width="180">&nbsp;
-																								</td>
-																								<td valign="middle"
-																									align="left">
-																									<table width="360"
-																										border="0"
-																										cellspacing="0"
-																										cellpadding="0"
-																										class="emailwrapto100pc">
-																										<tbody>
-																											<tr>
-																												<td align="left"
-																													valign="middle"
-																													style="font-size:12px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
-																													{{variantTitle}}
-																												</td>
-																												<td align="right"
-																													valign="middle"
-																													style="font-size:12px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
-																													{{price.currency.code}} {{price.displayAmount}}
-																												</td>
-																											</tr>
-																										</tbody>
-																									</table>
-																								</td>
-																							</tr>
-																						</tbody>
-																					</table>
-																				</a>
-																			</td>
-																		</tr>
-																		<tr>
-																			<td valign="top" align="left" height="15"
-																				style="line-height:1px; font-size:1px;">
-																				&nbsp;</td>
-																		</tr>
-																		<tr>
-																			<td valign="top" align="left" height="2"
-																				style="line-height:1px; font-size:1px; border-top:solid 2px #efefee;">
-																				&nbsp;</td>
-																		</tr>
-																		{{/each}}
-																		<tr>
-																			<td valign="top" align="right">
-																				<table width="210" border="0"
-																					cellspacing="0" cellpadding="0"
-																					class="emailwrapto100pc">
-																					<tbody>
-																						<tr>
-																							<td valign="top"
-																								align="left" height="20"
-																								style="line-height:1px; font-size:1px;">
-																								&nbsp;</td>
-																						</tr>
-																						<tr>
-																							<td valign="top"
-																								align="right"
-																								style="font-size:12px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
-																								Subtotal:
-																								{{price.currency.code}} {{billing.subtotal}}
-																							</td>
-																						</tr>
-																						<tr>
-																							<td valign="top"
-																								align="right"
-																								style="font-size:12px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
-																								Shipping:
-																								{{price.currency.code}} {{billing.shipping}}
-																							</td>
-																						</tr>
-																						<tr>
-																							<td valign="top"
-																								align="right"
-																								style="font-size:12px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
-																								Discounts:
-																								{{price.currency.code}} {{billing.discounts}}
-																							</td>
-																						</tr>
-																						<tr>
-																							<td valign="top"
-																								align="left" height="10"
-																								style="line-height:1px; font-size:1px;">
-																								&nbsp;</td>
-																						</tr>
-																						<tr>
-																							<td valign="top"
-																								align="left" height="2"
-																								style="line-height:1px; font-size:1px; border-top:solid 1px #a2a1a3;">
-																								&nbsp;</td>
-																						</tr>
-																						<tr>
-																							<td valign="top"
-																								align="left" height="10"
-																								style="line-height:1px; font-size:1px;">
-																								&nbsp;</td>
-																						</tr>
-																						<tr>
-																							<td valign="top"
-																								align="right"
-																								style="font-size:12px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
-																								Previous Total:
-																								{{price.currency.code}} {{billing.total}}</td>
-																						</tr>
-																						<tr>
-																							<td valign="top"
-																								align="left" height="10"
-																								style="line-height:1px; font-size:1px;">
-																								&nbsp;</td>
-																						</tr>
-																						<tr>
-																							<td valign="top"
-																								align="left" height="2"
-																								style="line-height:1px; font-size:1px; border-top:solid 3px #4c4d4e;">
-																								&nbsp;</td>
-																						</tr>
-																						<tr>
-																							<td valign="top"
-																								align="left" height="10"
-																								style="line-height:1px; font-size:1px;">
-																								&nbsp;</td>
-																						</tr>
-																						<tr>
-																							<td valign="top"
-																								align="left">
-																								<table width="100%"
-																									border="0"
-																									cellspacing="0"
-																									cellpadding="0">
-																									<tbody>
-																										<tr>
-																											<td valign="top"
-																												align="left"
-																												style="font-size:12px; line-height:normal; color:#a2a1a3; font-family:Arial, helvetica;">
-																												NEW
-																												TOTAL:
-																											</td>
-																											<td valign="top"
-																												align="right"
-																												style="font-size:22px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
-																												{{price.currency.code}} {{billing.adjustedTotal}}
-																											</td>
-																										</tr>
-																									</tbody>
-																								</table>
-																							</td>
-																						</tr>
-																					</tbody>
-																				</table>
-																			</td>
-																		</tr>
-																	</tbody>
-																</table>
-															</td>
-														</tr>
-														<!-- End Body -->
-
 														<!-- Begin footer -->
 														<tr>
 															<td height="32" align="left" valign="top"
