@@ -166,7 +166,7 @@ export default `<head>
 														<!-- Begin Body -->
 														<div>
 															<div>
-																<span style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Order Number:</span> 
+																<span style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Order Number:</span>
 																<a href="{{orderUrl}}" style="color:#1999dd;">{{order.referenceId}}</a>
 															</div>
 															<div>
@@ -182,26 +182,33 @@ export default `<head>
 																{{this.displayName}} ({{this.displayAmount}})
 																{{/each}}
 															</div>
-															{{#if order.preferredDeliveryDate}}															
+															{{#if order.preferredDeliveryDate}}
 																<div>
-																	<span style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Delivery Date:</span> 
+																	<span style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Delivery Date:</span>
 																	{{ order.preferredDeliveryDate }}
 																</div>
 															{{/if}}
-															
+
 															{{#if order.message}}
 																<div>
-																	<span style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Message:</span> 
+																	<span style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Message:</span>
 																	{{ order.message }}
 																</div>
 															{{/if}}
 
-															{{#if order.messageOnItem}}															
+															{{#if order.messageOnItem}}
 																<div>
-																	<span style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Message on Cake:</span> 
+																	<span style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Message on Cake:</span>
 																	{{ order.messageOnItem }}
 																</div>
 															{{/if}}
+
+                              {{#if order.exception}}
+                              <div>
+                                <span style="font-size:14px; line-height:normal; color:#da0610; font-family:Arial, helvetica; font-weight:bold;">Exception:</span>
+                                {{ order.exception.content }}
+                              </div>
+                              {{/if}}
 
 															<br style="height:2px; background-color: gray" />
 															<div

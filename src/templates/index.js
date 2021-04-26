@@ -6,6 +6,8 @@ import verifyUpdatedEmailTemplate from "./accounts/verifyUpdatedEmail.js";
 import verifyEmailTemplate from "./accounts/verifyEmail.js";
 import coreOrderNewTemplate from "./orders/new.js";
 import coreOrderNewAdminTemplate from "./orders/new-admin.js";
+import coreOrderNewExceptionTemplate from "./orders/new-exception.js";
+
 import orderShippedTemplate from "./orders/shipped.js";
 import orderRefundedTemplate from "./orders/refunded.js";
 import orderItemRefundTemplate from "./orders/itemRefund.js";
@@ -114,6 +116,13 @@ export default [
     subject: "Thank you for your gift order  {{order.referenceId}}"
   },
 
+  {
+    language: "en",
+    title: "Orders - Exception while fulfilling order [Admin]",
+    name: "orders/new-exception",
+    template: coreOrderNewExceptionTemplate,
+    subject: "Exception while fulfilling order  {{order.referenceId}}"
+  },
   /*
    * Orders - Order Shipped
    * When: Admin completes the order flow and item is shipped
