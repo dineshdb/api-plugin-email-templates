@@ -104,19 +104,23 @@ export default `<head>
 				color: inherit;
 				text-decoration: none;
 			}
-			a img, img {
+
+			a img,
+			img {
 				border: 0;
 				outline: 0;
 			}
+
 			.a5q {
 				display: none !important;
 			}
+
 			table table table div {
 				display: none !important;
 			}
 		}
 	</style>
-  <script type="application/ld+json">	{{{ jsonldString }}} </script>
+	<script type="application/ld+json">	{{{ jsonldString }}} </script>
 
 </head>
 
@@ -158,6 +162,18 @@ export default `<head>
 															</td>
 														</tr>
 														<tr>
+															{{#if order.exception}}
+																<td align="center>
+																<div style="background-color: #f9ccbb; min-height: 3em; display: flex; text-align: center; justify-content: center;align-items: center; flex-direction: column;">
+																	<div
+																		style="font-size:14px; line-height:normal; color:#da0610; font-family:Arial, helvetica; font-weight:bold; text-align: center; "> Exception: </div>
+																	<div style="text-align: center; "> {{ order.exception.content }}</div>
+																	
+																</div>
+																</td>
+															{{/if}}
+														</tr>
+														<tr>
 															<td height="31" align="left" valign="top"
 																style="font-size:1px; line-height:1px;">&nbsp;</td>
 														</tr>
@@ -166,8 +182,11 @@ export default `<head>
 														<!-- Begin Body -->
 														<div>
 															<div>
-																<span style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Order Number:</span>
-																<a href="{{orderUrl}}" style="color:#1999dd;">{{order.referenceId}}</a>
+																<span
+																	style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Order
+																	Number:</span>
+																<a href="{{orderUrl}}"
+																	style="color:#1999dd;">{{order.referenceId}}</a>
 															</div>
 															<div>
 																<span
@@ -183,32 +202,30 @@ export default `<head>
 																{{/each}}
 															</div>
 															{{#if order.preferredDeliveryDate}}
-																<div>
-																	<span style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Delivery Date:</span>
-																	{{ order.preferredDeliveryDate }}
-																</div>
+															<div>
+																<span
+																	style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Delivery
+																	Date:</span>
+																{{ order.preferredDeliveryDate }}
+															</div>
 															{{/if}}
 
 															{{#if order.message}}
-																<div>
-																	<span style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Message:</span>
-																	{{ order.message }}
-																</div>
+															<div>
+																<span
+																	style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Message:</span>
+																{{ order.message }}
+															</div>
 															{{/if}}
 
 															{{#if order.messageOnItem}}
-																<div>
-																	<span style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Message on Cake:</span>
-																	{{ order.messageOnItem }}
-																</div>
+															<div>
+																<span
+																	style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Message
+																	on Cake:</span>
+																{{ order.messageOnItem }}
+															</div>
 															{{/if}}
-
-                              {{#if order.exception}}
-                              <div>
-                                <span style="font-size:14px; line-height:normal; color:#da0610; font-family:Arial, helvetica; font-weight:bold;">Exception:</span>
-                                {{ order.exception.content }}
-                              </div>
-                              {{/if}}
 
 															<br style="height:2px; background-color: gray" />
 															<div
@@ -217,9 +234,9 @@ export default `<head>
 															<div
 																style="font-size:10px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
 																{{#with shipping.address}}
-																  {{this.fullName}} {{this.phone}}<br>
-																  {{this.address}}<br>
-																  {{this.city}} {{this.region}} {{this.postal}}
+																{{this.fullName}} {{this.phone}}<br>
+																{{this.address}}<br>
+																{{this.city}} {{this.region}} {{this.postal}}
 																{{/with}}
 															</div>
 
@@ -236,6 +253,28 @@ export default `<head>
 																{{/with}}
 															</div>
 														</div>
+
+														{{#if order.requestedImageUrls.length }}
+														<h3>Photos and videos</h3>
+														<div style="display: flex; margin-top: 20px; margin-bottom: 20px;">
+															{{#with order.requestedImageUrls}}
+															<a href="{{ this }}" alt="Open this image on a new tab" target="_blank" noopener noreferrer download>
+																<img style="max-height: 128px; padding: 5px;" align=left alt="Image you requested from your loved ones"
+																	src="{{ this }}"></img>
+															</a>
+															{{/with}}
+
+															{{#with order.requestedVideoUrls}}
+															<a href="{{ this }}" alt="Open this video on a new tab" target="_blank" noopener noreferrer download>
+																<video controls	style="max-height: 128px; padding: 5px;" align=left height="128" width="256" poster="https://www.hamropatro.com/images/hamropatro.png">
+																	<source src="{{this}}" type="video/mp4" />
+																	<img src="https://www.hamropatro.com/images/hamropatro.png" style="max-height: 120px;" title="Your browser does not support the <video> tag" />
+																</video>
+															</a>
+															{{/with}}
+														</div>
+														{{/if}}
+
 
 														<tr>
 															<td align="left" valign="top">
@@ -283,7 +322,8 @@ export default `<head>
 																												</td>
 																												<td valign="middle"
 																													align="left">
-																													{{#if imageURLs}}
+																													{{#if
+																													imageURLs}}
 																													<img src="{{thumbnail}}"
 																														width="50"
 																														height="50"
@@ -318,7 +358,8 @@ export default `<head>
 																												<td align="right"
 																													valign="middle"
 																													style="font-size:12px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
-																													{{price.currency.code}} {{price.displayAmount}}
+																													{{price.currency.code}}
+																													{{price.displayAmount}}
 																												</td>
 																											</tr>
 																										</tbody>
@@ -358,7 +399,8 @@ export default `<head>
 																								align="right"
 																								style="font-size:12px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
 																								Subtotal:
-																								{{price.currency.code}} {{billing.subtotal}}
+																								{{price.currency.code}}
+																								{{billing.subtotal}}
 																							</td>
 																						</tr>
 																						<tr>
@@ -366,7 +408,8 @@ export default `<head>
 																								align="right"
 																								style="font-size:12px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
 																								Shipping:
-																								{{price.currency.code}} {{billing.shipping}}
+																								{{price.currency.code}}
+																								{{billing.shipping}}
 																							</td>
 																						</tr>
 																						<tr>
@@ -374,7 +417,8 @@ export default `<head>
 																								align="right"
 																								style="font-size:12px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
 																								Discounts:
-																								{{price.currency.code}} {{billing.discounts}}
+																								{{price.currency.code}}
+																								{{billing.discounts}}
 																							</td>
 																						</tr>
 																						<tr>
@@ -400,7 +444,8 @@ export default `<head>
 																								align="right"
 																								style="font-size:12px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
 																								Previous Total:
-																								{{price.currency.code}} {{billing.total}}</td>
+																								{{price.currency.code}}
+																								{{billing.total}}</td>
 																						</tr>
 																						<tr>
 																							<td valign="top"
@@ -438,7 +483,8 @@ export default `<head>
 																											<td valign="top"
 																												align="right"
 																												style="font-size:22px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica;">
-																												{{price.currency.code}} {{billing.adjustedTotal}}
+																												{{price.currency.code}}
+																												{{billing.adjustedTotal}}
 																											</td>
 																										</tr>
 																									</tbody>
@@ -453,6 +499,10 @@ export default `<head>
 																</table>
 															</td>
 														</tr>
+
+
+
+
 														<!-- End Body -->
 
 														<!-- Begin footer -->
