@@ -156,21 +156,19 @@ export default `<head>
 														</tr>
 														<tr>
 															<td align="left" valign="top">
-																<a href="{{homepage}}"><img
-																		src="https://www.hamropatro.com/images/hamropatro.png"
-																		width="49" height="49" alt="logo"></a>
+																<a href="{{homepage}}"
+																	style="color:#f10e1a;font-size: 36; font-weight: 700;"><img
+																		src="https://hamro-patro-space.sgp1.cdn.digitaloceanspaces.com/gifts-public/hamro-gifts_logo.png"
+																		height="49" alt="logo"></a>
 															</td>
 														</tr>
 														<tr>
-															{{#if order.exception}}
-																<td align="center>
-																<div style="background-color: #f9ccbb; min-height: 3em; display: flex; text-align: center; justify-content: center;align-items: center; flex-direction: column;">
-																	<div
-																		style="font-size:14px; line-height:normal; color:#da0610; font-family:Arial, helvetica; font-weight:bold; text-align: center; "> Exception: </div>
-																	<div style="text-align: center; "> {{ order.exception.content }}</div>
-																	
-																</div>
-																</td>
+															{{#if order.welcomeMessage }}
+															<td align="left">
+																<span>
+																	{{{ order.welcomeMessage }}}
+																</span>
+															</td>
 															{{/if}}
 														</tr>
 														<tr>
@@ -191,7 +189,8 @@ export default `<head>
 															<div>
 																<span
 																	style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Order
-																	Date:</span> {{orderDate}}
+																	Date:</span>
+																{{orderDate}}
 															</div>
 															<div>
 																<span
@@ -204,8 +203,8 @@ export default `<head>
 															{{#if order.preferredDeliveryDate}}
 															<div>
 																<span
-																	style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Delivery
-																	Date:</span>
+																	style="font-size:14px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">Preferred
+																	Delivery Date:</span>
 																{{ order.preferredDeliveryDate }}
 															</div>
 															{{/if}}
@@ -253,28 +252,6 @@ export default `<head>
 																{{/with}}
 															</div>
 														</div>
-
-														{{#if order.requestedImageUrls.length }}
-														<h3>Photos and videos</h3>
-														<div style="display: flex; margin-top: 20px; margin-bottom: 20px;">
-															{{#with order.requestedImageUrls}}
-															<a href="{{ this }}" alt="Open this image on a new tab" target="_blank" noopener noreferrer download>
-																<img style="max-height: 128px; padding: 5px;" align=left alt="Image you requested from your loved ones"
-																	src="{{ this }}"></img>
-															</a>
-															{{/with}}
-
-															{{#with order.requestedVideoUrls}}
-															<a href="{{ this }}" alt="Open this video on a new tab" target="_blank" noopener noreferrer download>
-																<video controls	style="max-height: 128px; padding: 5px;" align=left height="128" width="256" poster="https://www.hamropatro.com/images/hamropatro.png">
-																	<source src="{{this}}" type="video/mp4" />
-																	<img src="https://www.hamropatro.com/images/hamropatro.png" style="max-height: 120px;" title="Your browser does not support the <video> tag" />
-																</video>
-															</a>
-															{{/with}}
-														</div>
-														{{/if}}
-
 
 														<tr>
 															<td align="left" valign="top">
@@ -500,6 +477,50 @@ export default `<head>
 															</td>
 														</tr>
 
+
+
+														{{#if order.requestedImageUrls.length }}
+														<div>
+															<div
+																style="font-size:14px; margin-top: 20px; line-height:normal; color:#4c4c4d; font-family:Arial, helvetica; font-weight:bold;">
+																Memories
+															</div>
+
+															<div
+																style="display: flex; min-width: 100%; margin-top: 20px; margin-bottom: 20px;">
+																{{#with order.requestedMediaMessage }}
+																{{{ order.requestedMediaMessage }}}
+																{{/with}}
+															</div>
+
+
+															{{#with order.requestedVideoUrls}}
+															<div style="width: 100%;">
+																<a href="{{ this }}" alt="Open this video on a new tab"
+																	target="_blank" noopener noreferrer>
+																	<img src="https://hamro-patro-space.sgp1.cdn.digitaloceanspaces.com/gifts-public/gifts_video_placeholder.png"
+																		style="min-width: 100%; width: 100%; padding: 5px;"
+																		title="Image you requested from your loved ones"
+																		alt="Image you requested from your loved ones" />
+																</a>
+															</div>
+															{{/with}}
+
+															{{#with order.requestedImageUrls}}
+															<div style="width: 100%;">
+																<a href="{{ this }}" alt="Open this image on a new tab"
+																	target="_blank" noopener noreferrer>
+																	<img style="min-width: 100%; width: 100%; padding: 5px;"
+																		align="center"
+																		alt="Image you requested from your loved ones"
+																		title="Image you requested from your loved ones"
+																		src="{{ this }}"></img>
+																</a>
+															</div>
+															{{/with}}
+
+														</div>
+														{{/if}}
 
 
 

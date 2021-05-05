@@ -118,10 +118,10 @@ export default [
 
   {
     language: "en",
-    title: "Orders - Exception while fulfilling order [Admin]",
+    title: "Orders - We had some issues with your gift delivery.",
     name: "orders/new-exception",
     template: coreOrderNewExceptionTemplate,
-    subject: "Exception while fulfilling order  {{order.referenceId}}"
+    subject: "We had some issues with your gift delivery - {{order.referenceId}}"
   },
   /*
    * Orders - Order Shipped
